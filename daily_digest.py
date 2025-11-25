@@ -11,13 +11,11 @@ RSS_FEEDS = [
 
     "https://news.ycombinator.com/rss",  
     
-    
     "https://astralcodexten.substack.com/feed",  
     "https://aella.substack.com/feed",           
     "https://feeds.feedburner.com/marginalrevolution/feed", 
     
     "https://www.lesswrong.com/feed.xml?view=curated-rss", 
-    "https://arxiv.org/rss/cs.AI", 
     
     "https://www.indiehackers.com/feed", 
     
@@ -31,7 +29,7 @@ RSS_FEEDS = [
 USER_INTERESTS = """
 I am looking for high-signal content. My specific interests are:
 
-1. HARD TECH & AI: LLMs, agents, transformers, code, open-source models, and technical breakthroughs.
+1. HARD TECH & AI: LLMs, agents, code, open-source models, and technical breakthroughs.
 2. THE FUTURE: Transhumanism, longevity, biohacking, and space colonization (SpaceX, Starship, Mars).
 3. BUSINESS: Bootstrapped startups, indie hacking, SaaS metrics, interesting VC-backed companies.
 4. SOCIOLOGY & DATA: Unconventional social studies, evolutionary psychology, prediction markets, and contrarian takes on society.
@@ -62,14 +60,14 @@ def get_headlines():
 
 def filter_articles(articles):
     print("Filtering articles with LLM...")
-    # We send the list to Gemini and ask it to pick the best 5-7 URLs
+    # We send the list to Gemini and ask it to pick the best URLs
     prompt = f"""
     Here is a list of news headlines:
     {articles}
 
     Based on these user interests: "{USER_INTERESTS}"
     
-    Select the top 5 to 7 most relevant articles. 
+    Select the top 10 most relevant articles. 
     Return ONLY a raw JSON list of their URLs, nothing else. 
     Example: ["url1", "url2", "url3"]
     """
