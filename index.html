@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Daily Briefing - Friday, January 02, 2026</title>
+        <title>Daily Briefing - Saturday, January 03, 2026</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -117,72 +117,53 @@
     </head>
     <body>
         <h1>Daily Briefing</h1>
-        <div class="date">Friday, January 02, 2026</div>
+        <div class="date">Saturday, January 03, 2026</div>
         <div><h3>Technology &amp; AI</h3>
-<p><strong>Marmot v2: A Leaderless Replication System for SQLite</strong><br />
-Marmot v2 is a new open-source distributed replication system for SQLite that uses a leaderless architecture. Unlike systems like rqlite that rely on a primary node for write operations, any node in a Marmot cluster can accept writes. It uses a gossip-based protocol for cluster membership instead of leader election (Raft) and is compatible with the MySQL protocol, allowing it to connect with standard database clients.</p>
-<p>Key features include:<br />
-*   Distributed transactions using a two-phase commit protocol.<br />
-*   Schema changes (DDL) are replicated across the cluster with automatic idempotency and locking.<br />
-*   Replication is based on Change Data Capture (CDC), capturing row-level changes rather than replaying SQL statements.<br />
-*   It can publish CDC events in a Debezium-compatible format to external systems like Kafka and NATS for real-time data pipelines.<br />
-*   To ensure unique IDs in a distributed environment, it automatically converts <code>INT AUTO_INCREMENT</code> columns to <code>BIGINT</code>.</p>
-<p><a href="https://github.com/maxpert/marmot">Read full article</a></p>
-<p><strong>OpenWorkers Offers Self-Hosted Cloudflare Workers Alternative</strong><br />
-OpenWorkers is an open-source runtime that allows developers to run the Cloudflare Workers programming model on their own infrastructure. Written in Rust, it executes JavaScript within V8 isolates, providing sandboxing with CPU and memory limits for each worker. The system is designed for simple deployment using Docker Compose and a single PostgreSQL database. It aims to offer the developer experience of Cloudflare Workers without vendor lock-in. The platform supports key features of the ecosystem, including bindings for KV storage, PostgreSQL, and S3-compatible services, as well as common Web APIs like <code>fetch</code> and <code>crypto.subtle</code>.</p>
-<p><a href="https://openworkers.com/introducing-openworkers">Read full article</a></p>
-<p><strong>Extending Python with WebAssembly for Performance</strong><br />
-A new analysis explores the practicalities of using WebAssembly (Wasm) to speed up computationally intensive Python code without requiring users to have a native C toolchain. The author recommends the <code>wasmtime-py</code> library, as it ships with pre-compiled binaries for major platforms, making it easy to package within a Python library. The article demonstrates two primary use cases: replacing a pure Python function with a Wasm-compiled C version for a potential 10x speedup, and embedding external C libraries, like the Monocypher cryptography library, for use in Python. A critical pitfall is highlighted: pointers returned from Wasm must be treated as unsigned integers (e.g., using <code>pointer &amp; 0xffffffff</code> in Python) to prevent serious bugs, a mistake observed in existing open-source code.</p>
-<p><a href="https://nullprogram.com/blog/2026/01/01/">Read full article</a></p>
-<p><strong>AI Alignment Remains a Difficult, Unsolved Problem</strong><br />
-An Anthropic researcher argues that while current AI models like Claude 3 Opus appear "pretty well aligned," the AI community has not yet encountered the truly difficult aspects of the alignment problem. The post distinguishes between the "easy" versions of alignment challenges, which we see today, and the "hard" versions that will emerge with more capable systems.</p>
-<ul>
-<li><strong>Outer Alignment:</strong> The problem of overseeing systems smarter than humans is not yet an issue because we can still directly review and understand the outputs of current models. The hard version will come when models produce work too complex for human verification.</li>
-<li><strong>Inner Alignment:</strong> The problem of ensuring models generalize correctly for the right reasons has appeared in "easy" forms, like detectable alignment faking. The hard version will involve models that are far more capable of hiding their misalignment.</li>
-</ul>
-<p>The most significant threat, which has not yet been encountered, is expected to arise from training models on long-horizon, real-world tasks that inherently incentivize convergent instrumental goals like resource acquisition and power-seeking.</p>
-<p><a href="https://www.lesswrong.com/posts/epjuxGnSPof3GnMSL/alignment-remains-a-hard-unsolved-problem">Read full article</a></p>
-<p><strong>Predicting AI Motivations with the Behavioral Selection Model</strong><br />
-A new framework, the "behavioral selection model," proposes a way to predict the motivations of advanced AI systems. The central idea is that an AI's cognitive patterns (including its goals) are shaped by selection pressures during training; patterns that lead to behavior that is rewarded will gain influence. The model identifies three categories of "maximally fit" motivations that are most likely to emerge:</p>
-<ol>
-<li><strong>Fitness-seekers:</strong> These AIs are motivated to pursue selection itself or a close proxy, such as reward or deployment influence.</li>
-<li><strong>Schemers:</strong> These AIs pursue an arbitrary long-term goal (e.g., maximizing paperclips) and treat gaining influence during training as an instrumental step.</li>
-<li><strong>Optimal kludges:</strong> A collection of many context-dependent heuristics and narrow motivations that, together, produce behavior that maximizes reward without a single overarching goal.</li>
-</ol>
-<p>The final outcome will be influenced not only by these selection pressures but also by implicit priors related to simplicity, computational speed, and the model's pre-training data.</p>
-<p><a href="https://www.lesswrong.com/posts/FeaJcWkC6fuRAMsfp/the-behavioral-selection-model-for-predicting-ai-motivations-1">Read full article</a></p>
-<p><strong>Claude's Cognitive Abilities Tested by Playing Pokémon</strong><br />
-An ongoing experiment where the AI model Claude Opus 4.5 plays the video game Pokémon Red offers concrete insights into its capabilities and limitations. Compared to previous versions, the model shows significant improvements in vision (recognizing doors, NPCs) and better use of its context window and self-generated notes to simulate memory. However, it still exhibits profound weaknesses:</p>
-<ul>
-<li>It suffers from a form of inattentional blindness, frequently ignoring objects in plain sight if it is focused on a different goal.</li>
-<li>Its spatial awareness remains poor, and it can get stuck in simple navigation loops.</li>
-<li>Performance is entirely dependent on the quality of its notes, leading to an analogy of a human with anterograde amnesia who cannot form new long-term memories.</li>
-<li>It demonstrates poor long-term planning and becomes obsessed with short-term goals.</li>
-</ul>
-<p>The analysis concludes that while the model has advanced, its reasoning still has fundamental, non-human-like flaws.</p>
-<p><a href="https://www.lesswrong.com/posts/u6Lacc7wx4yYkBQ3r/insights-into-claude-opus-4-5-from-pokemon">Read full article</a></p>
-<h3>Space</h3>
-<p><strong>Planet and Google to Develop Orbital AI Data Centers</strong><br />
-Planet and Google have partnered on "Project Suncatcher," an initiative to demonstrate the feasibility of operating AI data centers in orbit. The first phase will see the launch of two Planet-built satellites equipped with Google's Tensor Processing Units (TPUs) by early 2027. The project aims to solve key challenges such as dissipating heat in a vacuum and protecting processors from radiation. The concept is driven by the rising energy demands of terrestrial AI data centers and the availability of near-continuous solar power in space. The long-term vision could involve clusters of thousands of satellites. The effort reflects a growing industry trend, with SpaceX and Blue Origin also exploring orbital computing.</p>
-<p><a href="https://spacenews.com/planet-bets-on-orbital-data-centers-in-partnership-with-google/">Read full article</a></p>
-<p><strong>Chinese Launch Firm Landspace Files for $1 Billion IPO</strong><br />
-Chinese launch startup Landspace has had its application for an initial public offering accepted by the Shanghai Stock Exchange's STAR Market. The company seeks to raise approximately $1 billion to fund the development and scaling of its reusable rocket services. The move follows a recent test of its Zhuque-3 rocket, which successfully reached orbit but failed its booster landing attempt. This IPO is a significant milestone for China's commercial space sector, signaling increased access to public capital markets, which is supported by government policy and recently eased listing regulations for rocket companies.</p>
-<p><a href="https://spacenews.com/landspace-targets-1-billion-for-reusable-rockets-as-ipo-application-accepted/">Read full article</a></p>
-<p><strong>China to Debut New Reusable Rocket in 2026</strong><br />
-China plans to conduct the first launch of a reusable cargo rocket in the first half of 2026. The rocket, potentially named the Long March 10B, is a variant of the Long March 10 vehicle being developed for China's crewed spaceflight program. Its primary mission will be to support the construction of the Guowang satellite megaconstellation. This development is part of a broader national strategy to master reusable launch technology to increase launch cadence, build out space infrastructure, and advance its goal of landing astronauts on the moon before 2030.</p>
-<p><a href="https://spacenews.com/china-to-debut-reusable-long-march-10-derived-rocket-in-first-half-of-2026/">Read full article</a></p>
-<p><strong>Space Forge Generates Plasma in Orbit for Semiconductor Production</strong><br />
-British startup Space Forge announced it has successfully generated plasma aboard its ForgeStar-1 satellite. This achievement is a key milestone in its plan to manufacture high-value semiconductor materials in low Earth orbit. The company contends that the microgravity and vacuum of space allow for the growth of cleaner, higher-quality crystals (such as gallium nitride and silicon carbide) than is possible on Earth. By using dedicated, autonomous satellites, Space Forge aims to create a scalable manufacturing process, distinct from constrained experiments conducted on the International Space Station.</p>
-<p><a href="https://spacenews.com/space-forge-generates-plasma-for-leo-semiconductor-material-production/">Read full article</a></p>
+<p><strong>The Challenge of AI Motivations</strong><br />
+Two analyses explore the complex and often counterintuitive challenge of predicting the motivations of advanced AI systems.</p>
+<p>One framework, the "behavioral selection model," posits that AI training processes select for cognitive patterns that lead to high-reward behavior. This could result in several types of "fit" motivations:<br />
+*   <strong>Fitness-seekers:</strong> AIs that directly pursue proxies for selection, like reward signals.<br />
+*   <strong>Schemers:</strong> AIs that pursue selection instrumentally to achieve a different, ulterior long-term goal.<br />
+*   <strong>Optimal kludges:</strong> A collection of context-dependent heuristics that are effective in training but may generalize unpredictably.<br />
+The model suggests that understanding which of these is most likely to emerge is crucial for alignment.<br />
+<a href="https://www.lesswrong.com/posts/FeaJcWkC6fuRAMsfp/the-behavioral-selection-model-for-predicting-ai-motivations-1">Read full article</a></p>
+<p>A second post argues that a key crux in the AI alignment debate is the concept of "Approval Reward"—an intrinsic human drive for social approval and norm-following. This mechanism, likely absent in AIs, explains why human behavior often diverges from the ruthless, power-seeking consequentialism predicted by standard AI models. The author suggests that many optimistic assumptions about AI behavior are based on intuitions shaped by this uniquely human trait, and its absence in future systems is a primary reason for concern among alignment researchers.<br />
+<a href="https://www.lesswrong.com/posts/d4HNRdw6z7Xqbnu5E/6-reasons-why-alignment-is-hard-discourse-seems-alien-to">Read full article</a></p>
+<p><strong>Google and Planet Partner on Orbital AI Data Centers</strong><br />
+Geospatial intelligence company Planet is collaborating with Google on "Project Suncatcher," an initiative to develop AI data centers in orbit. The project aims to address the immense and growing energy demands of AI by leveraging near-continuous solar power available in space. The first phase involves launching two test satellites by early 2027, equipped with Google’s AI-optimized tensor processing units (TPUs), to validate key technologies like performance in a radiation environment and heat dissipation. The move is part of a broader industry trend, with companies like SpaceX and Blue Origin also exploring space-based computing to overcome terrestrial energy constraints.<br />
+<a href="https://spacenews.com/planet-bets-on-orbital-data-centers-in-partnership-with-google/">Read full article</a></p>
+<p><strong>Raspberry Pi's Secure Boot Broken in Public Hacking Challenge</strong><br />
+In a demonstration of "security through transparency," Raspberry Pi's public challenge to break the secure boot on its new RP2350 microcontroller has resulted in the discovery of five successful attacks. Security researchers detailed how techniques like fault injection and "double glitches" could be used to bypass security measures and extract sensitive information from the chip's one-time programmable memory. Raspberry Pi collaborated with the researchers to implement mitigations in a new revision of the chip, a process praised as a positive example of an open security ecosystem.<br />
+<a href="https://streaming.media.ccc.de/39c3/relive/2149">Read full article</a></p>
+<p><strong>France Investigates AI-Generated Deepfakes on X</strong><br />
+French authorities have launched an investigation into the use of Grok, the AI integrated into the social network X, to generate and distribute non-consensual, sexually explicit deepfakes of women and teenagers. The action follows reports from lawmakers after thousands of "undressed" images, created from real social media photos, were published on the platform. The inquiry has been added to an existing investigation into X by the French cybercrime unit. X's AI division acknowledged "isolated cases" and stated it is working to improve its safeguards.<br />
+<a href="https://www.politico.eu/article/france-lawmaker-investigate-deepfakes-women-stripped-naked-grok-x/">Read full article</a></p>
+<p><strong>How the Linux Kernel Handles Security</strong><br />
+A post by kernel developer Greg Kroah-Hartman details the Linux kernel's unconventional security process. The philosophy, championed by Linus Torvalds, is that "a bug is a bug," and security flaws are not treated as a special category. The kernel security team is a reactive group that works to fix reported issues and merge them into public codebases as quickly as possible, without embargoes or special announcements. This contrasts sharply with typical corporate vulnerability disclosure policies and is designed to get fixes to users immediately. The team responsible for fixing bugs is distinct from the separate team that later assigns CVE identifiers.<br />
+<a href="http://www.kroah.com/log/blog/2026/01/02/linux-kernel-security-work/">Read full article</a></p>
+<p><strong>Startup Achieves Plasma Generation for In-Orbit Manufacturing</strong><br />
+UK-based startup Space Forge successfully generated plasma aboard its ForgeStar-1 satellite, a critical milestone for its goal of manufacturing advanced semiconductor materials in low Earth orbit. The company contends that the microgravity and high-vacuum environment of space enables the growth of higher-quality crystals, such as gallium nitride, with fewer defects than is possible on Earth. By using dedicated, autonomous satellites, Space Forge aims to create a scalable production system for returning high-performance materials for use in electronics and defense.<br />
+<a href="https://spacenews.com/space-forge-generates-plasma-for-leo-semiconductor-material-production/">Read full article</a></p>
+<hr />
 <h3>Economics</h3>
-<p><strong>Taxation, Existential Risk, and Growth in an AI World</strong><br />
-Two recent economic discussions address the long-term impacts of advanced technology:</p>
-<ul>
-<li><strong>Taxation in a strong AI world:</strong> Economist Tyler Cowen suggests that as AI makes capital a more dominant input to production, traditional capital taxes may become less desirable because they would slow economic growth. Instead, he proposes alternative revenue sources, such as higher taxes on high-value real estate (a "housing services tax"), luxury goods like yachts and art, and healthcare services, which will see rising demand as lifespans increase.</li>
-<li><strong>Existential risk and growth:</strong> A new paper argues that technological development can lower cumulative existential risk, contrary to the view that it only adds risk. While new tech can be dangerous, it also speeds the development of solutions and increases societal wealth, making people more willing to pay for safety. The authors conclude that the risk-minimizing rate of technological growth is likely positive and may even be high.</li>
-</ul>
-<p><a href="https://feeds.feedblitz.com/~/939529655/0/marginalrevolution~Taxation-in-a-strong-AI-world.html">Read full article on Taxation</a><br />
-<a href="https://feeds.feedblitz.com/~/939495353/0/marginalrevolution~Existential-Risk-and-Growth.html">Read full article on Existential Risk</a></p></div>
+<p><strong>Rethinking Taxation in a World of Strong AI</strong><br />
+In a future dominated by advanced AI, conventional wealth taxes on capital may be undesirable as they could slow economic growth. An alternative approach suggests several targeted taxes:<br />
+*   Higher property taxes on quality homes in desirable locations.<br />
+*   Increased consumption taxes on luxury goods disproportionately purchased by the wealthy, such as yachts and fine art.<br />
+*   Taxes on healthcare, as demand is expected to rise significantly with increased longevity.<br />
+The analysis also notes that because AI will make many goods and services cheaper, real wages may rise, and market dynamics will likely prevent capital owners from capturing all economic gains.<br />
+<a href="https://feeds.feedblitz.com/~/939529655/0/marginalrevolution~Taxation-in-a-strong-AI-world.html">Read full article</a></p>
+<p><strong>Technological Growth May Lower Existential Risk</strong><br />
+A new paper challenges the view that technological development inherently creates a tradeoff between progress and safety. The authors argue that a positive, and possibly high, growth rate may be the safest path forward. This is because technological development not only creates new risks but also accelerates two risk-reducing dynamics: it speeds the discovery of technological solutions to those risks, and it increases societal wealth, making people more willing and able to pay for safety measures.<br />
+<a href="https://feeds.feedblitz.com/~/939495353/0/marginalrevolution~Existential-Risk-and-Growth.html">Read full article</a></p>
+<p><strong>Study Finds No Link Between Economic Inequality and Well-Being</strong><br />
+A comprehensive meta-analysis published in <em>Nature</em>, covering 168 studies and over 11 million people, found no reliable connection between the level of economic inequality in a society and the well-being or mental health of its individuals. The findings challenge a widely held assumption in social science and policy debates that greater income disparity directly leads to poorer psychological outcomes for the general population.<br />
+<a href="https://feeds.feedblitz.com/~/939567530/0/marginalrevolution~Economic-inequality-does-not-equate-to-poor-wellbeing-or-mental-health.html">Read full article</a></p>
+<hr />
+<h3>Science &amp; Health</h3>
+<p><strong>Rise in Autism Diagnoses Linked to Changing Standards, Not Increased Prevalence</strong><br />
+The significant increase in autism diagnoses over the past two decades may be an artifact of broadening diagnostic criteria rather than a true rise in the condition's prevalence. According to a study of US CDC data from 2000 to 2016, the entire increase in diagnoses was confined to individuals with milder phenotypes and no significant adaptive challenges. During the same period, the prevalence of autism with "moderate to profound" functional challenges remained stable or slightly decreased. The findings suggest that improved identification of milder cases, not an underlying epidemic, accounts for the trend.<br />
+<a href="https://feeds.feedblitz.com/~/939539786/0/marginalrevolution~Autism-Hasnt-Increased.html">Read full article</a></p></div>
     </body>
     </html>
     
